@@ -10,6 +10,7 @@ class GDController extends Controller
 {
     function generateImage()
     {
+
         GD::image()->setBG('white')->setText('No Photo', 'black')->jpg();
     }
 }

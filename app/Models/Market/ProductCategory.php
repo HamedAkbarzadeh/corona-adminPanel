@@ -3,37 +3,48 @@
 namespace App\Models\Market;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProductCategory extends Model
 {
-    use HasFactory , SoftDeletes , Sluggable;
+    use HasFactory, SoftDeletes, Sluggable;
     public function sluggable(): array
     {
-        return[
+        return [
             'slug' => [
-                'source' => 'name'
-            ]
-            ];
+                'source' => 'name',
+            ],
+        ];
     }
 
     protected $casts = ['image' => 'array'];
-    protected $fillable = ['name' , 'description' , 'slug' , 'image' , 'status' , 'tags' , 'show_in_menu' , 'parent_id'];
+    protected $fillable = ['name', 'description', 'slug', 'image', 'status', 'tags', 'show_in_menu', 'parent_id'];
 
-    public function parent(){
-        return $this->belongsTo($this, 'parent_id')->where('status' , 1)->with('parent');
+    public function parent()
+    {
+        return $this->belongsTo($this, 'parent_id')->where('status', 1)->with('parent');
     }
-    public function children(){
-        return $this->hasMany($this, 'parent_id')->where('status' , 1)->with('children');
+    public function children()
+    {
+        return $this->hasMany($this, 'parent_id')->where('status', 1)->with('children');
     }
     public function products()
     {
-        return $this->hasMany(Product::class , 'category_id')->where('status' , 1);
+        return $this->hasMany(Product::class, 'category_id')->where('status', 1);
     }
     public function attributes()
     {
         return $this->hasMany(CategoryAttribute::class);
+    }
+    public function scopeActive(Builder $query)
+    {
+        $query->where('status', 1);
+    }
+    public function scopeShowInMenu(Builder $query)
+    {
+        $query->where('show_in_menu', 1);
     }
 }

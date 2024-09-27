@@ -1,4 +1,8 @@
+@push('toast')
+    @include('layouts.alerts.toast.success')
+@endpush
 <div class="col-10 grid-margin stretch-card">
+
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Category</h4>
@@ -6,9 +10,9 @@
                 {{-- search --}}
                 <div>
                     <input type="text" class="form-control" wire:model.debounce.500ms.live='search'
-                        placeholder="search box" name="" id="">
+                        placeholder="search box">
                 </div>
-                <a wire:navigate href="{{ route('admin.market.category.create') }}"
+                <a wire:navigate href="{{ route('admin.market.product.create') }}"
                     class="btn btn-outline-light px-5 py-2 shadow-box-soft">Create</a>
             </div>
             <div class="table-responsive">
@@ -31,7 +35,7 @@
                                 <td>{{ $data->name }}</td>
                                 <td>
                                     @if ($data->image == null)
-                                        <img src="{{ route('gerenrate.image') }}" id="orgImage"
+                                        <img src="{{ route('generate.image') }}" id="orgImage"
                                             onerror="handleImageError()" width='100' alt="">
                                         <img src="{{ asset('app/' . $data->image) }}" id="replaceImage" class="d-none"
                                             width='100' alt="">
@@ -39,7 +43,7 @@
                                         <img src="{{ asset('app/' . $data->image) }}" width='100' alt="">
                                     @endif
                                 </td>
-                                <td>{{ priceFormat($data->price) }}</td>
+                                <td>{{ number_format($data->price) }}</td>
                                 <td>{{ $data->category->name }}</td>
 
                                 <td wire:click='changeStatus({{ $data->id }})'>

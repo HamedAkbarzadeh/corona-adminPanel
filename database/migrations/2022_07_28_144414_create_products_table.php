@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateProductsTable extends Migration
 {
@@ -16,13 +16,13 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('introduction');
+            $table->text('introduction')->nullable();
             $table->string('slug')->unique()->nullable();
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->decimal('price',20,3);
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('marketable')->default(1)->comment('0 => in not marketable , 1 => marketable');
-            $table->string('tags');
+            $table->string('tags')->nullable();
             $table->tinyInteger('sold_number')->default(0);
             $table->tinyInteger('frozen_number')->default(0);
             $table->tinyInteger('marketable_number')->default(0);

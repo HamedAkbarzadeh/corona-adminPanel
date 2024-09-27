@@ -8,12 +8,13 @@ use App\Livewire\Admin\Market\Brand\BrandIndex;
 use App\Livewire\Admin\Market\Brand\BrandCreate;
 use App\Livewire\Admin\Market\Brand\BrandUpdate;
 use App\Http\Controllers\Auth\GoogleAuthController;
+use App\Livewire\Admin\Market\Product\ProductIndex;
+use App\Livewire\Admin\Market\Product\ProductCreate;
+use App\Livewire\Admin\Market\Product\ProductUpdate;
 use App\Livewire\Admin\Market\Category\CategoryIndex;
 use App\Livewire\Admin\Market\Category\CategoryCreate;
 use App\Livewire\Admin\Market\Category\CategoryUpdate;
-use App\Livewire\Admin\Market\Product\ProductCreate;
-use App\Livewire\Admin\Market\Product\ProductIndex;
-use App\Livewire\Admin\Market\Product\ProductUpdate;
+use App\Livewire\Admin\Market\Product\ProductCreateMeta;
 
 Route::get('/', function () {
     return redirect('login');
@@ -51,6 +52,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/', ProductIndex::class)->name('admin.market.product.index');
             Route::get('/create', ProductCreate::class)->name('admin.market.product.create');
             Route::get('/edit', ProductUpdate::class)->name('admin.market.product.edit');
+            Route::get('/meta/{product}', ProductCreateMeta::class)->name('admin.market.product.create.meta');
         });
     });
 });

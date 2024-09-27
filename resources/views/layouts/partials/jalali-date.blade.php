@@ -1,5 +1,5 @@
-<script src="{{ asset('admin-assets/jalalidatepicker/persian-date.min.js') }}"></script>
-<script src="{{ asset('admin-assets/jalalidatepicker/persian-datepicker.min.js') }}"></script>
+<script src="{{ asset('assets/jalalidatepicker/persian-date.min.js') }}"></script>
+<script src="{{ asset('assets/jalalidatepicker/persian-datepicker.min.js') }}"></script>
 <script>
     $(document).ready(function () {
         $('#published_at_view').persianDatepicker({

@@ -19,8 +19,11 @@
 <script src="{{ asset('assets/js/dashboard.js') }}"></script>
 <!-- End custom js for this page -->
 
-<script src="{{ asset('assets/select2/js/jquery-3.5.1.min.js') }}"></script>
-<script src="{{ asset('assets/select2/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
 
 <script src="{{ asset('assets/select2/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets/sweetalert/sweetalert2.all.min.js') }}"></script>
+{{-- <script src="sweetalert2/dist/sweetalert2.min.js"></script> --}}
+{{-- <script src="{{ asset('js/app.js') }}"></script> --}}

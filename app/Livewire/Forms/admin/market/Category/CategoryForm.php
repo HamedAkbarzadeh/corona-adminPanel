@@ -41,7 +41,7 @@ class CategoryForm extends Form
         $this->validate();
         DB::transaction(function () {
             if ($this->image !== null)
-                $path = $this->image->store('images', 'public');
+                $path = $this->image->store('images/category/', 'public');
             ProductCategory::create([
                 'name' => $this->name,
                 'description' => $this->description,
